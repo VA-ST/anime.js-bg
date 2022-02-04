@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondo Animado | Anime.JS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <h2><span> Animando con </span> <br>Anime.JS</h2>
+    </div>
+
+    <script src="anime.min.js"></script>
+    <script>
+        const container = document.querySelector('.container')
+        for (var i = 0; i<=15; i++){
+            const blocks = document.createElement('div');
+            blocks.classList.add('block');
+            container.appendChild(blocks);
+        }
+        function animateBlocks(){
+            anime({
+                targets: '.block',
+                translateX: function(){
+                    return anime.random(-600,600);
+                },
+                translateY: function(){
+                    return anime.random(-400,400);
+                },
+                scale: function(){
+                    return anime.random(1,5);
+                },
+                easing: 'linear',
+                duration: 4000,
+                delay: anime.stagger(10),
+                complete: animateBlocks,
+            })
+        }
+        animateBlocks()
+    </script>
+</body>
+</html>
